@@ -1,4 +1,3 @@
-import React from "react";
 import { Platform } from "../hooks/useGames";
 import { Icon } from "@chakra-ui/react";
 import {
@@ -31,7 +30,7 @@ const GameIcon = ({ platforms }: Props) => {
   return (
     <>
       {platforms.map((platform) => (
-        <Icon as={gameIcon[platform.slug]} color="gray.500" />
+        <Icon key={platform.id} as={gameIcon[platform.slug]} color="gray.500" />
       ))}
     </>
   );
