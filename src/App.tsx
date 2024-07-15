@@ -5,10 +5,12 @@ import GameGrid from "./components/GameGrid";
 import "./App.css";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
+import PlatFormSelector from "./components/PlatFormSelector";
+import { Platform } from "./hooks/useGames";
 
 function App() {
   const [selectGenre, setSelectGenre] = useState<Genre | null>(null); // once selected it should contain  Genre type (genre object from genreList)only but by default it should be null or nothing be selected
-
+  const [selectPlatform, setSelectPlatform] = useState<Platform | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -27,11 +29,21 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX="5px">
-          <GenreList onSelectdGenre={(x) => setSelectGenre(x)} />
+          <GenreList
+            onSelectdGenre={(x) => setSelectGenre(x)}
+            selectfontGenre={selectGenre}
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid filtredGenere={selectGenre} />
+        <PlatFormSelector
+          seletedPlatForm={selectPlatform}
+          onSelectPlatForm={(platForm) => setSelectPlatform(platForm)}
+        />
+        <GameGrid
+          filtredGenere={selectGenre}
+          filteredPlatForm={selectPlatform}
+        />
       </GridItem>
     </Grid>
   );
