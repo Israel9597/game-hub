@@ -22,6 +22,7 @@ export interface Games {
   metacritic: number;
   genres: ResultGenre[];
   platforms: Platform[];
+  rating_top: number;
 }
 
 const useGames = (gameQuery: GameQuery) =>
