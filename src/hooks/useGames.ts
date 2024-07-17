@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useGeneric from "./useGeneric";
 import { Genre } from "./useGenres";
 //import { Platform } from "../../../../game-hub/src/hooks/useGames";
@@ -23,19 +24,17 @@ export interface Games {
   platforms: Platform[];
 }
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatForm: Platform | null
-) =>
+const useGames = (gameQuery: GameQuery) =>
   useGeneric<Games>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        parent_platforms: selectedPlatForm?.id,
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
       },
     },
-    [selectedGenre?.id, selectedPlatForm?.id]
+    [gameQuery]
   ); // so we passed the (selectedGenre) parameter from the selected genre of parent component then update the api request
 // data hook useGeneric gets end point which gets all the games but we can make it more flexible by passing the selected genre to the data hook using axios request config object to select from the endpoint
 export default useGames;
