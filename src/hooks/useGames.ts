@@ -1,7 +1,5 @@
 import { GameQuery } from "../App";
 import useGeneric from "./useGeneric";
-import { Genre } from "./useGenres";
-//import { Platform } from "../../../../game-hub/src/hooks/useGames";
 
 export interface Platform {
   id: number;

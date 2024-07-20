@@ -1,10 +1,9 @@
-import useGeneric from "./useGeneric";
-
+import platForms from "../data/platForms";
 export interface Platform {
   id: number;
   name: string;
   slug: string;
 }
 
-const usePlatforms = () => useGeneric<Platform>("/platforms/lists/parents");
+const usePlatforms = () => ({ generic: platForms, error: false });
 export default usePlatforms;

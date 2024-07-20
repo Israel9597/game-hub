@@ -1,4 +1,4 @@
-import useGeneric from "./useGeneric";
+import genres from "../data/genres";
 
 export interface Genre {
   id: number;
@@ -7,5 +7,5 @@ export interface Genre {
   slug: string;
 }
 
-const useGenres = () => useGeneric<Genre>("/genres");
+const useGenres = () => ({ generic: genres, loading: false, error: null });
 export default useGenres;
